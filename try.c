@@ -1,112 +1,98 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Define the structure for a node in the linked list
-struct Node {
-    int data;               // Data of the node
-    struct Node* next;     // Pointer to the next node in the linked list
+struct node
+{
+    int data;
+    struct node *link;
 };
 
-// Function to create a new node with the given data
-struct Node* createNode(int data) 
+struct node2
 {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    if (newNode == NULL) {
-        printf("Memory allocation failed.\n");
-        return NULL;
+    int data;
+    struct node2 link;
+};
+
+void ft_print_data(struct node *head)
+{
+    if (head == NULL)
+        printf("there is no node\n");
+    struct node *current;
+    current = head;
+    while (current != NULL)
+    {
+        printf("%d\n", current->data);
+        current = current->link;
     }
-    newNode->data = data;
-    newNode->next = NULL;
-    return newNode;
 }
 
-// Function to insert a node at the beginning of the linked list
-struct Node* insertAtBeginning(struct Node* head, int data) {
-    struct Node* newNode = createNode(data);
-    if (newNode == NULL) {
-        return head;
+void ft_count_node(struct node *head)
+{
+    int count = 0;
+    if (head == NULL)
+        printf("there is no node\n");
+    struct node *current;
+    current = head;
+    while (current != NULL)
+    {
+        count++;
+        current = current->link;
     }
-    if (head == NULL) {
-        head = newNode;
-    } else {
-        newNode->next = head;
-        head = newNode;
-    }
-    return head;
+    printf("Number of nodes is %d\n", count);
 }
 
-// Function to insert a node at the end of the linked list
-struct Node* insertAtEnd(struct Node* head, int data) {
-    struct Node* newNode = createNode(data);
-    if (newNode == NULL) {
-        return head;
-    }
-    if (head == NULL) {
-        head = newNode;
-    } else {
-        struct Node* temp = head;
-        while (temp->next != NULL) {
-            temp = temp->next;
-        }
-        temp->next = newNode;
-    }
-    return head;
+void ft_set_end(struct node *head, int data)
+{
+    struct node *tmp, *ptr;
+
+    tmp = (struct node *)malloc(sizeof(struct node));
+    ptr = head;
+    tmp->data = data;
+    tmp->link = NULL;
+
+    while (ptr->link != NULL)
+        ptr = ptr->link;
+    ptr->link = tmp;
 }
 
-// Function to delete a node with the given data from the linked list
-struct Node* deleteNode(struct Node* head, int data) {
-    if (head == NULL) {
-        printf("Linked list is empty.\n");
-        return NULL;
-    }
-    if (head->data == data) {
-        struct Node* temp = head;
-        head = head->next;
-        free(temp);
-        printf("Node with data %d deleted from the linked list.\n", data);
-        return head;
-    }
-    struct Node* prev = head;
-    struct Node* curr = head->next;
-    while (curr != NULL && curr->data != data) {
-        prev = curr;
-        curr = curr->next;
-    }
-    if (curr == NULL) {
-        printf("Node with data %d not found in the linked list.\n", data);
-        return head;
-    }
-    prev->next = curr->next;
-    free(curr);
-    printf("Node with data %d deleted from the linked list.\n", data);
-    return head;
+void ft_swap(struct node *head)
+{
+    struct node *tmp;
+
+    tmp = (struct node *)malloc(sizeof(struct node));
+    tmp = head;
+    head = head->link;
+    head->link = tmp;
 }
 
-// Function to display the linked list
-void display(struct Node* head) {
-    if (head == NULL) {
-        printf("Linked list is empty.\n");
-        return;
-    }
-    printf("Linked list: ");
-    struct Node* temp = head;
-    while (temp != NULL) {
-        printf("%d -> ", temp->data);
-        temp = temp->next;
-    }
-    printf("NULL\n");
-}
 
-int main(int argc, char* argv[]) {
-    struct Node* head = NULL;  // Initialize an empty linked list
+int main()
+{
+    struct node *head = (struct node *)malloc(sizeof(struct node));
+    head->data = 1;
+    head->link = NULL;
 
-    // Insert numbers from argv into the linked list
-    for (int i = 1; i < argc; i++) {
-        int num = atoi(argv[i]);
-        head = insertAtEnd(head, num);
-    }
+    struct node *current = (struct node *)malloc(sizeof(struct node));
+    current->data = 2;
+    current->link = NULL;
+    head->link = current;
 
-    display(head);  // Display the linked list
+    current = (struct node *)malloc(sizeof(struct node));
+    current->data = 3;
+    current->link = NULL;
+    head->link->link = current;
 
-    return 0;
+    current = (struct node *)malloc(sizeof(struct node));
+    current->data = 4;
+    current->link = NULL;
+    head->link->link->link = current;
+
+
+    struct node2 *headd2 = (struct node2 *)malloc(sizeof(struct node2));
+
+    ft_set_end(head, 5);
+    ft_count_node(head);
+    ft_print_data(head);
+    ft_swap(head);
+    ft_push(head);
 }
