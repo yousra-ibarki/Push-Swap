@@ -22,6 +22,6 @@ struct node		*ft_sa(struct node *stack_a);
 struct node		*ft_add_end(struct node *head, int data);
 struct node		*ft_add_node(int data);
 struct node		*ft_fill(int ac, char **av);
-struct node *delete_node(struct node *head);
+struct node		*delete_node(struct node *head);
 
 #endif
