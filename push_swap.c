@@ -56,22 +56,22 @@ struct node	*ft_add_end(struct node *head, int data)
 	return (head);
 }
 
-struct node	*ft_add_front(struct node *head, int data)
+struct node	*ft_add_front(struct node **head, int data)
 {
 	struct node	*add_node;
 
 	add_node = ft_add_node(data);
 	if (add_node == NULL)
-		return (head);
-	if (head == NULL)
-		head = add_node;
+		return (*head);
+	if (*head == NULL)
+		*head = add_node;
 	else
 	{
-		add_node->link = head;
-		head = add_node;
+		add_node->link = *head;
+		*head = add_node;
 	}
-	ft_print_data(head);
-	return (head);
+	//ft_print_data(head);
+	return (*head);
 }
 
 struct node	*ft_fill(int ac, char **av)
@@ -103,26 +103,26 @@ struct node	*delete_node(struct node *head)
 struct node	*rra(struct node **stack_a)
 {
 	struct node	*new_node;
+	struct node	*tmp;
 
-	new_node = ft_add_end(*stack_a, (*stack_a)->data);
-	*stack_a = delete_node(*stack_a);
-	return (*stack_a);
+	tmp = *stack_a;
+	while (tmp != NULL)
+		tmp = tmp->link;
+	printf("%d\n", tmp->data);
+	return *stack_a;
 }
 
 int	main(int ac, char **av)
 {
-	int			i;
-	int			nbr;
-	int			size;
 	struct node	*stack_a;
-	struct node	*stack_b;
+	//struct node	*stack_b;
 
-	i = 1;
+	//stack_b = NULL;
 	if (ac > 2)
 	{
 		stack_a = ft_fill(ac, av);
 		ft_print_data(stack_a);
-		stack_a = ft_add_front(stack_a, 4);
+		rra(&stack_a);
 		ft_print_data(stack_a);
 	}
 	else
