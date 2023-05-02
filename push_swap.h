@@ -13,15 +13,17 @@ struct			node
 	struct node	*link;
 };
 
-int				ft_check_arg(char *str);
 int				ft_atoi(const char *str);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
-void			ft_ss(struct node *stack_a, struct node *stack_b);
+void			ss(struct node *stack_a, struct node *stack_b);
 struct node		*ra(struct node **stack_a);
-struct node		*ft_sa(struct node *stack_a);
+struct node		*sa(struct node *stack_a);
 struct node		*ft_add_end(struct node *head, int data);
 struct node		*ft_add_node(int data);
 struct node		*ft_fill(int ac, char **av);
-struct node		*delete_node(struct node *head);
+struct node		*ft_delete_last_node(struct node *head);
+struct node		*ft_delete_first_node(struct node *head);
+struct node		*rra(struct node **stack);
+struct node	*push(struct node **src, struct node **dst)
 
 #endif

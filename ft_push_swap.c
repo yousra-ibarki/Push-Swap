@@ -1,12 +1,31 @@
 #include "push_swap.h"
 
-struct node	*delete_node(struct node *head)
+struct node	*ft_delete_first_node(struct node *head)
 {
 	struct node	*tmp;
 
 	tmp = head;
 	head = head->link;
 	free(tmp);
+	return (head);
+}
+
+struct node	*ft_delete_last_node(struct node *head)
+{
+	struct node	*second_last;
+
+	second_last = head;
+	if (head == NULL)
+		return (NULL);
+	if (head->link == NULL)
+	{
+		free(head);
+		return (NULL);
+	}
+	while (second_last->link->link != NULL)
+		second_last = second_last->link;
+	free(second_last->link);
+	second_last->link = NULL;
 	return (head);
 }
 
@@ -17,7 +36,10 @@ void	ft_print_data(struct node *head)
 
 	i = 1;
 	if (head == NULL)
+	{
 		printf("there is no node\n");
+		return ;
+	}
 	current = head;
 	while (current != NULL)
 	{
@@ -62,8 +84,9 @@ struct node	*ft_add_end(struct node *head, int data)
 {
 	struct node	*add_node;
 	struct node	*tmp;
-	int i = 1;
+	int			i;
 
+	i = 1;
 	add_node = ft_add_node(data);
 	if (add_node == NULL)
 		return (head);
@@ -77,7 +100,6 @@ struct node	*ft_add_end(struct node *head, int data)
 			tmp = tmp->link;
 			i++;
 		}
-
 		tmp->link = add_node;
 	}
 	return (head);
@@ -100,29 +122,22 @@ struct node	*ft_fill(int ac, char **av)
 	return (head);
 }
 
-struct node	*ra(struct node **stack)
-{
-	struct node	*new_node;
-
-	// if(*stack == NULL)
-	// 	return ;
-	new_node = ft_add_end(*stack, (*stack)->data);
-	*stack = delete_node(*stack);
-	return (*stack);
-}
-
 int	main(int ac, char **av)
 {
 	struct node	*stack_a;
+	struct node	*stack_b;
 
-	//struct node	*stack_b;
-	//stack_b = NULL;
+	stack_b = NULL;
 	if (ac > 2)
 	{
 		stack_a = ft_fill(ac, av);
-		 ft_print_data(stack_a);
-		 ra(&stack_a);
-		 ft_print_data(stack_a);
+		ft_print_data(stack_a);
+		{
+			stack_b = ft_add_node(10);
+			stack_b = ft_add_end(stack_b, 12);
+			stack_b = ft_add_end(stack_b, 13);
+			ft_print_data(stack_b);
+		}
 	}
 	else
 		return (0);
