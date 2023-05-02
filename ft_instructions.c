@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_actions.c                                       :+:      :+:    :+:   */
+/*   ft_instructions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoibarki <yoibarki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:40:21 by yoibarki          #+#    #+#             */
-/*   Updated: 2023/05/02 13:40:22 by yoibarki         ###   ########.fr       */
+/*   Updated: 2023/05/02 16:47:55 by yoibarki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push_swap.h"
 
 //Swap the first 2 elements at the top of the stack,
 //DO NOTHING if there is only one or no elements
-struct node	*sa(struct node *stack)
+struct s_node	*sa(struct s_node *stack)
 {
 	int	tmp;
 
@@ -26,54 +25,54 @@ struct node	*sa(struct node *stack)
 	stack->link->data = tmp;
 	return (stack);
 }
-void	ss(struct node *stack_a, struct node *stack_b)
+void	ss(struct s_node *stack_a, struct s_node *stack_b)
 {
 	sa(stack_a);
 	sa(stack_b);
 }
 
 //Shift up all elements of stack a by 1
-struct node	*ra(struct node **stack)
+struct s_node	*ra(struct s_node **stack)
 {
-	struct node	*new_node;
+	struct s_node	*new_node;
 
 	// if(*stack == NULL)
 	// 	return ;
 	new_node = ft_add_end(*stack, (*stack)->data);
-	*stack = ft_delete_first_node(*stack);
+	*stack = ft_delete_firss_node(*stack);
 	return (*stack);
 }
-void	rr(struct node *stack_a, struct node *stack_b)
+void	rr(struct s_node *stack_a, struct s_node *stack_b)
 {
 	ra(&stack_a);
 	ra(&stack_b);
 }
 
 //Shift down all elements of the stack by 1
-struct node	*rra(struct node **stack)
+struct s_node	*rra(struct s_node **stack)
 {
-	struct node	*new_node;
-	struct node	*tmp;
+	struct s_node	*new_node;
+	struct s_node	*tmp;
 
 	tmp = *stack;
 	while (tmp->link != NULL)
 		tmp = tmp->link;
 	new_node = ft_add_front(stack, tmp->data);
-	ft_delete_last_node(*stack);
+	ft_delete_lass_node(*stack);
 	return (*stack);
 }
-void	rrr(struct node *stack_a, struct node *stack_b)
+void	rrr(struct s_node *stack_a, struct s_node *stack_b)
 {
 	rra(&stack_a);
 	rra(&stack_b);
 }
 
 //take the first element at the top of b and put it at the top of a
-struct node	*push(struct node **src, struct node **dst)
+struct s_node	*push(struct s_node **src, struct s_node **dst)
 {
-	struct node	*add_node;
+	struct s_node	*add_node;
 
 	add_node = ft_add_front(dst, (*src)->data);
-	*src = ft_delete_first_node(*src);
+	*src = ft_delete_firss_node(*src);
 	return (*src);
 }

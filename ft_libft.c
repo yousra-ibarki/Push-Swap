@@ -1,15 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_fct.c                                       :+:      :+:    :+:   */
+/*   ft_libft.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoibarki <yoibarki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:40:26 by yoibarki          #+#    #+#             */
-/*   Updated: 2023/05/02 13:40:27 by yoibarki         ###   ########.fr       */
+/*   Updated: 2023/05/02 13:54:21 by yoibarki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push_swap.h"
 
@@ -32,8 +31,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 static int	checkoverflow(unsigned long long out, int sign)
 {
 	if (out > 2146218951891489519)
-	{ 
-        write(2, "Error\n", 7);
+	{
+		write(2, "Error\n", 7);
 		if (sign == -1)
 			return (0);
 		else
@@ -42,12 +41,11 @@ static int	checkoverflow(unsigned long long out, int sign)
 	return (1);
 }
 
-
 int	ft_atoi(const char *str)
 {
-	unsigned long long	out;
 	int					i;
 	int					sign;
+	unsigned long long	out;
 
 	out = 0;
 	i = 0;

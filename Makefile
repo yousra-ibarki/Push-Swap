@@ -6,15 +6,16 @@
 #    By: yoibarki <yoibarki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/02 13:39:57 by yoibarki          #+#    #+#              #
-#    Updated: 2023/05/02 13:40:00 by yoibarki         ###   ########.fr        #
+#    Updated: 2023/05/02 13:51:57 by yoibarki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = out
 
-SRCS = 	ft_actions.c \
-		ft_add_fct.c \
-		ft_push_swap.c
+SRCS = 	ft_instructions.c \
+		ft_libft.c \
+		ft_help.c \
+		main.c
 
 OBJS = $(SRCS:.c=.o)
 
