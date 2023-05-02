@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_actions.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yoibarki <yoibarki@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/02 13:40:21 by yoibarki          #+#    #+#             */
+/*   Updated: 2023/05/02 13:40:22 by yoibarki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "push_swap.h"
 
 //Swap the first 2 elements at the top of the stack,
@@ -30,7 +43,7 @@ struct node	*ra(struct node **stack)
 	*stack = ft_delete_first_node(*stack);
 	return (*stack);
 }
-struct node	*rr(struct node *stack_a, struct node *stack_b)
+void	rr(struct node *stack_a, struct node *stack_b)
 {
 	ra(&stack_a);
 	ra(&stack_b);
@@ -49,7 +62,7 @@ struct node	*rra(struct node **stack)
 	ft_delete_last_node(*stack);
 	return (*stack);
 }
-struct node	*rrr(struct node *stack_a, struct node *stack_b)
+void	rrr(struct node *stack_a, struct node *stack_b)
 {
 	rra(&stack_a);
 	rra(&stack_b);
