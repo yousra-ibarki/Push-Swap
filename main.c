@@ -66,7 +66,9 @@ struct s_node	*ft_fill(int ac, char **av)
 
 void ft_three_number(struct s_node **stack_a)
 {
-	if((*stack_a)->link->link->data == ft_find_max(*stack_a))
+	if((*stack_a)->data == ft_find_min(*stack_a) && (*stack_a)->link->data != ft_find_max(*stack_a))
+		return ;
+	else if((*stack_a)->link->link->data == ft_find_max(*stack_a))
 		{
 			printf("sa\n");
 			sa((*stack_a));
@@ -97,50 +99,61 @@ void ft_three_number(struct s_node **stack_a)
 
 void ft_five_number(struct s_node **stack_a, struct s_node **stack_b)
 {
-	//int n = 2;
 	struct s_node *current;
 	current = *stack_a;
 	int i = 0;
 	int time;
-
-	while(current != NULL)
+	int pos;
+	int j = 0;
+	time = 0;
+	while(j < 2)
 	{
-		if(ft_find_min(current) == current->data)
+		while(current != NULL)
 		{
-			if(i > (ft_count(*stack_a)/2))
+			if(ft_find_min(current) == current->data)
 			{
-				time = ft_count(*stack_a) - i;
-					printf("%d - %d = %d\n", ft_count(*stack_a), i, time);
-				while(time > 0)
+				pos = i;
+				i = 0;
+				time = 0;
+				if(pos > (ft_count(*stack_a)/2))
 				{
-					rra(&(*stack_a));
-					time--;
+					while(time < (ft_count(*stack_a) - pos))
+					{
+						rra(&(*stack_a));
+						time++;
+					}
+					push(&(*stack_a), &(*stack_b));
+					current= *stack_a;
 				}
-				push(&(*stack_a), &(*stack_b));
-			}
-			if(i <= (ft_count(*stack_a)/2))
-			{
-				while(i > 0)
+				else if(pos <= (ft_count(*stack_a)/2))
 				{
-					ra(&(*stack_a));
-					i--;
+					while(time < pos)
+					{
+						ra(&(*stack_a));
+						time++;
+					}
+					push(&(*stack_a), &(*stack_b));
+					current = *stack_a;
 				}
-				push(&(*stack_a), &(*stack_b));
-				printf("stack_b = ");
-				ft_print_data(*stack_b);
+				if(ft_count(*stack_a) == 3)
+				{
+					ft_three_number(&(*stack_a));
+					push(&(*stack_b), &(*stack_a));
+					push(&(*stack_b), &(*stack_a));
+					return ;
+				}
+				break;	
 			}
-			if(ft_count(*stack_a) == 3)
-			{
-				printf("in\n");
-				ft_print_data(*stack_a);
-				ft_three_number(&(*stack_a));
-				push(&(*stack_b), &(*stack_a));
-				return ;
-			}	
+			current = current->link;
+			 i++;
 		}
-		current = current->link;
-		i++;
+		j++;
 	}
+}
+
+void ft_other_number(struct s_node **stack_a, struct s_node **stack_b)
+{
+	
 }
 
 int	main(int ac, char **av)
@@ -156,13 +169,15 @@ int	main(int ac, char **av)
 
 		stack_a->max = ft_find_max(stack_a);
 		stack_a->min = ft_find_min(stack_a);
-		printf("max = %d, min = %d\n", stack_a->max, stack_a->min);
+		//printf("max = %d, min = %d\n", stack_a->max, stack_a->min);
 
 		if(ft_count(stack_a) == 3)
 			ft_three_number(&stack_a);
 
 		else if(ft_count(stack_a) == 4 || ft_count(stack_a) == 5)
 			ft_five_number(&stack_a, &stack_b);
+		else if(ft_count(stack_a) > 5)
+			ft_other_number(&stack_a, &stack_b);
 		
 		ft_print_data(stack_a);
 		ft_print_data(stack_b);

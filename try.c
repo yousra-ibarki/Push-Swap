@@ -1,5 +1,4 @@
 #include "push_swap.h"
-
 void ft_rank(struct s_node *stack_a)
 {
 	printf("start\n");
