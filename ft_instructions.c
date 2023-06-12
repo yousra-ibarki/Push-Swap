@@ -39,7 +39,7 @@ struct s_node	*ra(struct s_node **stack)
 	// if(*stack == NULL)
 	// 	return ;
 	new_node = ft_add_end(*stack, (*stack)->data);
-	*stack = ft_delete_firss_node(*stack);
+	*stack = ft_delete_first_node(*stack);
 	return (*stack);
 }
 void	rr(struct s_node *stack_a, struct s_node *stack_b)
@@ -58,7 +58,7 @@ struct s_node	*rra(struct s_node **stack)
 	while (tmp->link != NULL)
 		tmp = tmp->link;
 	new_node = ft_add_front(stack, tmp->data);
-	ft_delete_lass_node(*stack);
+	ft_delete_last_node(*stack);
 	return (*stack);
 }
 void	rrr(struct s_node *stack_a, struct s_node *stack_b)
@@ -73,6 +73,6 @@ struct s_node	*push(struct s_node **src, struct s_node **dst)
 	struct s_node	*add_node;
 
 	add_node = ft_add_front(dst, (*src)->data);
-	*src = ft_delete_firss_node(*src);
+	*src = ft_delete_first_node(*src);
 	return (*src);
 }

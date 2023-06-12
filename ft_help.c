@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-struct s_node	*ft_delete_firss_node(struct s_node *head)
+struct s_node	*ft_delete_first_node(struct s_node *head)
 {
 	struct s_node	*tmp;
 
@@ -22,7 +22,7 @@ struct s_node	*ft_delete_firss_node(struct s_node *head)
 	return (head);
 }
 
-struct s_node	*ft_delete_lass_node(struct s_node *head)
+struct s_node	*ft_delete_last_node(struct s_node *head)
 {
 	struct s_node	*second_last;
 
@@ -81,4 +81,57 @@ struct s_node	*ft_add_end(struct s_node *head, int data)
 		tmp->link = add_node;
 	}
 	return (head);
+}
+
+int ft_find_max(struct s_node *stack_a)
+{
+	int max;
+
+	max = stack_a->data;
+	struct s_node *current = stack_a->link;
+	while(current != NULL)
+	{
+		if(current->data > max)
+			max = current->data;
+		current = current->link;
+	}
+	return max;
+}
+
+int ft_find_min(struct s_node *stack_a)
+{
+	int min;
+
+	min = stack_a->data;
+	struct s_node *current = stack_a->link;
+	while(current != NULL)
+	{
+		if(current->data < min)
+			{
+				min = current->data;
+				(stack_a->rank)++;
+			}
+		current = current->link;
+	}
+	return min;
+}
+
+int	ft_count(struct s_node *head)
+{
+	int			i;
+	struct s_node	*current;
+
+	i = 0;
+	if (head == NULL)
+	{
+		printf("there is no node\n");
+		return 0;
+	}
+	current = head;
+	while (current != NULL)
+	{
+		current = current->link;
+		i++;
+	}
+	return i;
 }
