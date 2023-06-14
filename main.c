@@ -151,9 +151,52 @@ void ft_five_number(struct s_node **stack_a, struct s_node **stack_b)
 	}
 }
 
+void ft_selectionSort(struct s_node **stack_t) 
+{
+    struct s_node *current = *stack_t;
+    struct s_node *minN;
+	int tmp;
+    while (current != NULL) 
+	{
+        minN = current;
+        struct s_node *temp = current->link;
+        while (temp != NULL) 
+		{
+            if (temp->data < minN->data) 
+			{
+                minN = temp;
+            }
+            temp = temp->link;
+        }
+	
+	tmp = current->data;
+    current->data = minN->data;
+    minN->data = tmp;
+    current = current->link;
+	}
+}
+
 void ft_other_number(struct s_node **stack_a, struct s_node **stack_b)
 {
+	int content;
+	struct s_node *stack_t;
+	struct s_node *current;
+	stack_t = NULL;
+	current = *stack_a;
+	stack_b = NULL;
+	int i = 0;
+
+	while(i < ft_count(*stack_a))
+	{
+		content = current->data;
+		ft_add_front(&stack_t, content);
+		current = current->link;
+		i++;
+	}
 	
+	ft_selectionSort(&stack_t);
+	ft_print_data(stack_t);
+
 }
 
 int	main(int ac, char **av)
@@ -179,8 +222,8 @@ int	main(int ac, char **av)
 		else if(ft_count(stack_a) > 5)
 			ft_other_number(&stack_a, &stack_b);
 		
-		ft_print_data(stack_a);
-		ft_print_data(stack_b);
+		//ft_print_data(stack_a);
+		//ft_print_data(stack_b);
 	}
 	else
 		return (0);

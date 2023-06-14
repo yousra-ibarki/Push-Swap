@@ -13,7 +13,6 @@
 #include "push_swap.h"
 
 //Swap the first 2 elements at the top of the stack,
-//DO NOTHING if there is only one or no elements
 struct s_node	*sa(struct s_node *stack)
 {
 	int	tmp;
@@ -31,7 +30,6 @@ void	ss(struct s_node *stack_a, struct s_node *stack_b)
 	sa(stack_b);
 }
 
-//Shift up all elements of stack a by 1
 struct s_node	*ra(struct s_node **stack)
 {
 	struct s_node	*new_node;
@@ -48,7 +46,6 @@ void	rr(struct s_node *stack_a, struct s_node *stack_b)
 	ra(&stack_b);
 }
 
-//Shift down all elements of the stack by 1
 struct s_node	*rra(struct s_node **stack)
 {
 	struct s_node	*new_node;
@@ -67,7 +64,6 @@ void	rrr(struct s_node *stack_a, struct s_node *stack_b)
 	rra(&stack_b);
 }
 
-//take the first element at the top of b and put it at the top of a
 struct s_node	*push(struct s_node **src, struct s_node **dst)
 {
 	struct s_node	*add_node;
