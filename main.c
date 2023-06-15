@@ -28,7 +28,8 @@ void	ft_print_data(struct s_node *head)
 	current = head;
 	while (current != NULL)
 	{
-		printf("%d\t", current->data);
+		printf("index = %d\t", current->index);
+		printf("%d\n", current->data);
 		current = current->link;
 		i++;
 	}
@@ -119,6 +120,7 @@ void ft_five_number(struct s_node **stack_a, struct s_node **stack_b)
 				{
 					while(time < (ft_count(*stack_a) - pos))
 					{
+				printf("pos = %d, ft_count = %d\n", pos, (ft_count(*stack_a)/2));
 						rra(&(*stack_a));
 						time++;
 					}
@@ -138,8 +140,14 @@ void ft_five_number(struct s_node **stack_a, struct s_node **stack_b)
 				if(ft_count(*stack_a) == 3)
 				{
 					ft_three_number(&(*stack_a));
+					ft_print_data(*stack_a);
+					if(ft_count(*stack_b) == 1)
 					push(&(*stack_b), &(*stack_a));
-					push(&(*stack_b), &(*stack_a));
+					else
+					{
+						push(&(*stack_b), &(*stack_a));
+						push(&(*stack_b), &(*stack_a));
+					}
 					return ;
 				}
 				break;	
@@ -166,13 +174,37 @@ void ft_selectionSort(struct s_node **stack_t)
 			{
                 minN = temp;
             }
+			(temp->index)++;
             temp = temp->link;
         }
-	
 	tmp = current->data;
     current->data = minN->data;
     minN->data = tmp;
     current = current->link;
+	}
+}
+
+void ft_no_name_for_now(struct s_node *stack_t, struct s_node **stack_a)
+{
+	struct s_node *current;
+	current = *stack_a;
+	int i = 0;
+	while(stack_t != NULL)
+	{
+		i = stack_t->data;
+		current = *stack_a;
+		while(current != NULL)
+		{
+				///printf("curent = %d \t I = %d\n", current->data, i);
+			if(current->data == i)
+			{
+				//printf("hello\n");
+				current->index = stack_t->index;
+				break;
+			}
+			current = current->link;
+		}
+		stack_t = stack_t->link;
 	}
 }
 
@@ -181,10 +213,12 @@ void ft_other_number(struct s_node **stack_a, struct s_node **stack_b)
 	int content;
 	struct s_node *stack_t;
 	struct s_node *current;
+	struct s_node *currentb;
 	stack_t = NULL;
 	current = *stack_a;
-	stack_b = NULL;
+	currentb = *stack_b;
 	int i = 0;
+	int j = 0;
 
 	while(i < ft_count(*stack_a))
 	{
@@ -193,10 +227,40 @@ void ft_other_number(struct s_node **stack_a, struct s_node **stack_b)
 		current = current->link;
 		i++;
 	}
-	
 	ft_selectionSort(&stack_t);
-	ft_print_data(stack_t);
+	ft_no_name_for_now(stack_t, &(*stack_a));
+	i = 0;
+	i += j;
+	if(ft_count(*stack_a) < 100)
+		j = 15;
+	else if(ft_count(*stack_a) >= 100)
+		j = 42;
 
+	printf("stack_a\n");
+	ft_print_data(*stack_a);
+
+	while((*stack_a) != NULL)
+	{
+		if((*stack_a)->index > i)
+		{
+			push(&(*stack_a), &(*stack_b));
+			i++;
+		}
+		else if((*stack_a)->index <= i && (*stack_a)->index < (i + j))
+		{
+			push(&(*stack_a), &(*stack_b));
+			//ra(&(*stack_a));
+			i++;
+		}
+		else
+		{
+			ra(&(*stack_a));
+		}
+	}
+	ft_no_name_for_now(stack_t, &(*stack_b));
+	free(stack_t);
+	printf("stack_b\n");
+	ft_print_data(*stack_b);
 }
 
 int	main(int ac, char **av)
@@ -208,7 +272,7 @@ int	main(int ac, char **av)
 	if (ac > 2)
 	{
 		stack_a = ft_fill(ac, av);
-		ft_print_data(stack_a);
+		//ft_print_data(stack_a);
 
 		stack_a->max = ft_find_max(stack_a);
 		stack_a->min = ft_find_min(stack_a);
@@ -216,13 +280,14 @@ int	main(int ac, char **av)
 
 		if(ft_count(stack_a) == 3)
 			ft_three_number(&stack_a);
-
 		else if(ft_count(stack_a) == 4 || ft_count(stack_a) == 5)
-			ft_five_number(&stack_a, &stack_b);
+			{
+				ft_five_number(&stack_a, &stack_b);
+			}
 		else if(ft_count(stack_a) > 5)
 			ft_other_number(&stack_a, &stack_b);
 		
-		//ft_print_data(stack_a);
+		ft_print_data(stack_a);
 		//ft_print_data(stack_b);
 	}
 	else
