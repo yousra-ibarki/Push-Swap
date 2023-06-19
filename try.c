@@ -1,24 +1,16 @@
 #include "push_swap.h"
-void ft_rank(struct s_node *stack_a)
+
+
+int index_max = (ft_count(*stack_b) - 1);
+int pos;
+struct s_node *current;
+while (*stack_b != NULL)
 {
-	printf("start\n");
-	int mindata;
-	int pos;
-	struct s_node *tmp_stack;
-	tmp_stack = stack_a;
-	pos = 1;
-
-	mindata = ft_find_min(tmp_stack);
-	while(tmp_stack != NULL)
+	pos = 0;
+	current = *stack_b;
+	while (current->index == index_max)
 	{
-		if(tmp_stack->data == mindata)
-		{	stack_a->rank = pos;
-			pos++;
-			mindata = ft_find_min(tmp_stack);
-		}
-		tmp_stack = tmp_stack->link;
+		pos++;
 	}
-		
-	printf("end\n");
 
-}
+}	

@@ -41,11 +41,11 @@ struct s_node	*ft_delete_last_node(struct s_node *head)
 	return (head);
 }
 
-struct s_node	*ft_add_front(struct s_node **head, int data)
+struct s_node	*ft_add_front(struct s_node **head, int data, int index)
 {
 	struct s_node	*add_node;
 
-	add_node = ft_add_node(data);
+	add_node = ft_add_node(data, index);
 	if (add_node == NULL)
 		return (*head);
 	if (*head == NULL)
@@ -58,14 +58,14 @@ struct s_node	*ft_add_front(struct s_node **head, int data)
 	return (*head);
 }
 
-struct s_node	*ft_add_end(struct s_node *head, int data)
+struct s_node	*ft_add_end(struct s_node *head, int data, int index)
 {
 	struct s_node	*add_node;
 	struct s_node	*tmp;
 	int			i;
 
 	i = 1;
-	add_node = ft_add_node(data);
+	add_node = ft_add_node(data, index);
 	if (add_node == NULL)
 		return (head);
 	if (head == NULL)
