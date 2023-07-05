@@ -13,9 +13,16 @@
 NAME = out
 
 SRCS = 	ft_instructions.c \
-		ft_libft.c \
+		ft_atoi.c \
 		ft_help.c \
-		main.c
+		ft_three.c \
+		ft_five.c \
+		ft_more.c \
+		ft_parcing.c \
+		ft_check.c \
+		ft_split.c \
+		ft_substr_strdup.c \
+		main.c	
 
 OBJS = $(SRCS:.c=.o)
 

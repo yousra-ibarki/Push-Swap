@@ -1,16 +1,19 @@
 #include "push_swap.h"
 
+#include <stdio.h>
 
-int index_max = (ft_count(*stack_b) - 1);
-int pos;
-struct s_node *current;
-while (*stack_b != NULL)
+int ft_strcmp(const char *str1, const char *str2) {
+    while (*str1 && (*str1 == *str2)) {
+        str1++;
+        str2++;
+    }
+    return *(unsigned char *)str1 - *(unsigned char *)str2;
+}
+
+
+int main()
 {
-	pos = 0;
-	current = *stack_b;
-	while (current->index == index_max)
-	{
-		pos++;
-	}
-
-}	
+    char *str = "";
+    char *str2 = "";
+    printf("int = %d\n", ft_strcmp(str, str2));
+}

@@ -12,23 +12,6 @@
 
 #include "push_swap.h"
 
-//Swap the first 2 elements at the top of the stack,
-struct s_node	*sa(struct s_node *stack)
-{
-	int	tmp;
-
-	if (!stack || !stack->link)
-		return (0);
-	tmp = stack->data;
-	stack->data = stack->link->data;
-	stack->link->data = tmp;
-	return (stack);
-}
-void	ss(struct s_node *stack_a, struct s_node *stack_b)
-{
-	sa(stack_a);
-	sa(stack_b);
-}
 
 struct s_node	*ra(struct s_node **stack)
 {
@@ -40,6 +23,7 @@ struct s_node	*ra(struct s_node **stack)
 	*stack = ft_delete_first_node(*stack);
 	return (*stack);
 }
+
 void	rr(struct s_node *stack_a, struct s_node *stack_b)
 {
 	ra(&stack_a);
@@ -58,6 +42,7 @@ struct s_node	*rra(struct s_node **stack)
 	ft_delete_last_node(*stack);
 	return (*stack);
 }
+
 void	rrr(struct s_node *stack_a, struct s_node *stack_b)
 {
 	rra(&stack_a);
