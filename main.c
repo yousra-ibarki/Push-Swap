@@ -56,6 +56,17 @@ void ft_print_data(struct s_node *head)
 	printf(" NULL\n");
 }
 
+void ft_two_number(struct s_node **stack_a)
+{
+	if ((*stack_a)->data == ft_find_max(*stack_a))
+		{
+			sa(*stack_a);
+			write(1, "sa\n", 4);
+		}
+	else
+		return;
+}
+
 int main(int ac, char **av)
 {
 	struct s_node *stack_a;
@@ -68,6 +79,8 @@ int main(int ac, char **av)
 		stack_a = ft_fill(ac, av);
 		str =  ft_strjoin(ac, av, " ");
 		ft_check(str, ac);
+		if(ft_count(stack_a) == 2)
+			ft_two_number(&stack_a);
 		if (ft_count(stack_a) == 3)
 			ft_three_number(&stack_a);
 		else if (ft_count(stack_a) == 4 || ft_count(stack_a) == 5)
@@ -76,7 +89,6 @@ int main(int ac, char **av)
 			ft_other_number(&stack_a, &stack_b);
 
 		ft_print_data(stack_a);
-		printf("this is the result %s\n", str);
 	}
 	else
 		return (0);

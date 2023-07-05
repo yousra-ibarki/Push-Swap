@@ -18,7 +18,7 @@ SRCS = 	ft_instructions.c \
 		ft_three.c \
 		ft_five.c \
 		ft_more.c \
-		ft_parcing.c \
+		ft_strjoin.c \
 		ft_check.c \
 		ft_split.c \
 		ft_substr_strdup.c \

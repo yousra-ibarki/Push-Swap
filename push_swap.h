@@ -58,5 +58,6 @@ size_t ft_strlen(char *s);
 void ft_check(char *str, int ac);
 char **ft_split(char *s, char c);
 char *ft_substr(char *s, unsigned int start, size_t len);
+void ft_error(void);
 
 #endif

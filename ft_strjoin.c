@@ -12,7 +12,7 @@ size_t ft_strlen(char *s)
     return (i);
 }
 
-char *ft_strcpy(char *s1, char *s2)
+static char *ft_strcpy(char *s1, char *s2)
 {
     int i;
 
@@ -27,7 +27,7 @@ char *ft_strcpy(char *s1, char *s2)
     return (s1);
 }
 
-int ft_len(int size, char **strs, char *sep)
+static int ft_len(int size, char **strs, char *sep)
 {
     int i;
     int len_total;
