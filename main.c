@@ -8,7 +8,7 @@ struct s_node *ft_fill(int ac, char **av)
 
 	head = NULL;
 	i = 1;
-	
+
 	while (i < ac)
 	{
 		nbr = ft_atoi(av[i]);
@@ -18,10 +18,10 @@ struct s_node *ft_fill(int ac, char **av)
 	return (head);
 }
 
-int	ft_count(struct s_node *head)
+int ft_count(struct s_node *head)
 {
-	int			i;
-	struct s_node	*current;
+	int i;
+	struct s_node *current;
 
 	i = 0;
 	if (head == NULL)
@@ -59,10 +59,10 @@ void ft_print_data(struct s_node *head)
 void ft_two_number(struct s_node **stack_a)
 {
 	if ((*stack_a)->data == ft_find_max(*stack_a))
-		{
-			sa(*stack_a);
-			write(1, "sa\n", 4);
-		}
+	{
+		sa(*stack_a);
+		write(1, "sa\n", 4);
+	}
 	else
 		return;
 }
@@ -77,9 +77,10 @@ int main(int ac, char **av)
 	if (ac > 2)
 	{
 		stack_a = ft_fill(ac, av);
-		str =  ft_strjoin(ac, av, " ");
-		ft_check(str, ac);
-		if(ft_count(stack_a) == 2)
+		str = ft_strjoin(ac, av, " ");
+		 ft_check(str, ac);
+		printf("str = %s\n", str);
+		if (ft_count(stack_a) == 2)
 			ft_two_number(&stack_a);
 		if (ft_count(stack_a) == 3)
 			ft_three_number(&stack_a);

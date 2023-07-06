@@ -59,5 +59,6 @@ void ft_check(char *str, int ac);
 char **ft_split(char *s, char c);
 char *ft_substr(char *s, unsigned int start, size_t len);
 void ft_error(void);
+int ft_isdigit_space_minus_plus(int c);
 
 #endif

@@ -81,7 +81,6 @@ void ft_push_to_a(struct s_node **stack_a, struct s_node **stack_b, struct s_nod
 	int maxi;
 	int size;
 	int pos;
-
 	size = ft_count(*stack_b);
 	maxi = (size - 1);
 	while (*stack_b != NULL)
@@ -114,7 +113,6 @@ void ft_other_number(struct s_node **stack_a, struct s_node **stack_b)
 	stack_t = NULL;
 	current = *stack_a;
 	int i = 0;
-
 	while (i < ft_count(*stack_a))
 	{
 		content = current->data;

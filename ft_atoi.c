@@ -2,7 +2,9 @@
 
 static int	checkoverflow(unsigned long long out, int sign)
 {
-	if (out > 2146218951891489519)
+	if(out > 2147483647)
+            ft_error();
+	else if (out > 2146218951891489519)
 	{
 		write(2, "Error\n", 7);
 		if (sign == -1)
