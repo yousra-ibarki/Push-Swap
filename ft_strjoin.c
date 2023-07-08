@@ -44,7 +44,7 @@ static int ft_len(int size, char **strs, char *sep)
     return (len_total - 1);
 }
 
-char *ft_strjoin(int size, char **strs, char *sep)
+char *ft_str_join(int size, char **strs, char *sep)
 {
     char *str;
     int i;

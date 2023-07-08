@@ -35,6 +35,7 @@ struct s_node *rra(struct s_node **stack)
 	tmp = *stack;
 	while (tmp->link != NULL)
 		tmp = tmp->link;
+	printf("hello rra\n");
 	new_node = ft_add_front(stack, tmp->data, tmp->index);
 	ft_delete_last_node(*stack);
 	return (*stack);

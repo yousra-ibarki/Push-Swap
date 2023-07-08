@@ -14,16 +14,6 @@ int ft_isdigit_space_minus_plus(int c)
     return (0);
 }
 
-// static int ft_strcmp(const char *str1, const char *str2)
-// {
-//     while (*str1 && (*str1 == *str2))
-//     {
-//         str1++;
-//         str2++;
-//     }
-//     return *(unsigned char *)str1 - *(unsigned char *)str2;
-// }
-
 static void ft_check_digit(char *str)
 {
     int len;

@@ -76,7 +76,7 @@ int main(int ac, char **av)
 	stack_b = NULL;
 	if (ac > 2)
 	{
-		str = ft_strjoin(ac, av, " ");
+		str = ft_str_join(ac, av, " ");
 		 ft_check(str, ac);
 		stack_a = ft_fill(ac, av);
 		if (ft_count(stack_a) == 2)
