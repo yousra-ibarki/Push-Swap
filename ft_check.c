@@ -14,15 +14,15 @@ int ft_isdigit_space_minus_plus(int c)
     return (0);
 }
 
-static int ft_strcmp(const char *str1, const char *str2)
-{
-    while (*str1 && (*str1 == *str2))
-    {
-        str1++;
-        str2++;
-    }
-    return *(unsigned char *)str1 - *(unsigned char *)str2;
-}
+// static int ft_strcmp(const char *str1, const char *str2)
+// {
+//     while (*str1 && (*str1 == *str2))
+//     {
+//         str1++;
+//         str2++;
+//     }
+//     return *(unsigned char *)str1 - *(unsigned char *)str2;
+// }
 
 static void ft_check_digit(char *str)
 {
@@ -47,7 +47,7 @@ static void ft_check_digit(char *str)
     }
 }
 
-char *ft_remove_plus(char *str)
+char *ft_remove_plus_zero(char *str)
 {
     int i = 0;
     int j = 0;
@@ -78,8 +78,7 @@ void ft_check(char *str, int ac)
 
     j = 0;
     ft_check_digit(str);
-    str = ft_remove_plus(str);
-    printf("str = %s\n", str);
+    str = ft_remove_plus_zero(str);
     splited = ft_split(str, ' ');
     while (j < ac)
     {
@@ -87,7 +86,7 @@ void ft_check(char *str, int ac)
         i = j + 1;
         while (splited[i] != NULL && tmp != NULL)
         {
-            if (ft_strcmp(tmp, splited[i]) == 0)
+            if (ft_atoi(splited[i]) == ft_atoi(tmp))
             {
                 printf("dub\n");
                 ft_error();
@@ -96,4 +95,19 @@ void ft_check(char *str, int ac)
         }
         j++;
     }
+    // while (j < ac)
+    // {
+    //     tmp = splited[j];
+    //     i = j + 1;
+    //     while (splited[i] != NULL && tmp != NULL)
+    //     {
+    //         if (ft_strcmp(tmp, splited[i]) == 0)
+    //         {
+    //             printf("dub\n");
+    //             ft_error();
+    //         }
+    //         i++;
+    //     }
+    //     j++;
+    // }
 }

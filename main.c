@@ -76,10 +76,9 @@ int main(int ac, char **av)
 	stack_b = NULL;
 	if (ac > 2)
 	{
-		stack_a = ft_fill(ac, av);
 		str = ft_strjoin(ac, av, " ");
 		 ft_check(str, ac);
-		printf("str = %s\n", str);
+		stack_a = ft_fill(ac, av);
 		if (ft_count(stack_a) == 2)
 			ft_two_number(&stack_a);
 		if (ft_count(stack_a) == 3)
@@ -88,8 +87,8 @@ int main(int ac, char **av)
 			ft_five_number(&stack_a, &stack_b);
 		else if (ft_count(stack_a) > 5)
 			ft_other_number(&stack_a, &stack_b);
-
 		ft_print_data(stack_a);
+
 	}
 	else
 		return (0);
