@@ -1,4 +1,4 @@
-#include "../push_swap.h"
+#include "push_swap.h"
 char	*ft_backslash(char *hold)
 {
 	int	i;

@@ -10,38 +10,61 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = out
+NAME = mandatory
+BNAME = push_bonus
+HEAD = header
 
-SRCS = 	ft_instructions.c \
-		ft_atoi.c \
-		ft_help.c \
-		ft_three.c \
-		ft_five.c \
-		ft_more.c \
-		ft_strjoin.c \
-		ft_check.c \
-		ft_split.c \
-		ft_substr_strdup.c \
-		main.c	
+SRCS = 	push_swap/ft_instructions.c \
+		push_swap/ft_atoi.c \
+		push_swap/ft_help.c \
+		push_swap/ft_three.c \
+		push_swap/ft_five.c \
+		push_swap/ft_more.c \
+		push_swap/ft_strjoin.c \
+		push_swap/ft_check.c \
+		push_swap/ft_split.c \
+		push_swap/ft_substr_strdup.c \
+		push_swap/main.c	
+
+BSRCS = Checker/ft_checker.c \
+		push_swap/ft_atoi.c \
+		push_swap/ft_help.c \
+		push_swap/ft_split.c \
+		push_swap/ft_strjoin.c \
+		push_swap/ft_substr_strdup.c \
+		push_swap/ft_check.c \
+		push_swap/ft_instructions.c \
+		push_swap/ft_three.c \
+		Checker/get_next_line.c \
+		Checker/get_next_line_utils.c 
 
 OBJS = $(SRCS:.c=.o)
+BOBJS = $(BSRCS:%.c=%.o)
 
 CC = cc
-
 CFLAGS = -Wall -Wextra -Werror
 
 
 all: $(NAME)
 
-$(NAME):$(OBJS) push_swap.h
+$(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $@
 
+bonus: $(NAME) $(BNAME)
+
+$(BNAME) : $(BOBJS) 
+	$(CC) $(CFLAGS) $(BOBJS) -o $@
+
+%.o : %.c $(HEAD)/push_swap.h
+		$(CC) $(CFLAGS) -c $< -I $(HEAD) -o $@
+
+
 clean:
-	@rm -f $(OBJS)
+	@rm -f $(OBJS) $(BOBJS)
 
 fclean:clean
-	@rm -f $(NAME)
+	@rm -f $(NAME) $(BNAME)
 
 re: fclean all
 
-.phony: re clean fclean all
+.phony: re clean fclean all bonus 

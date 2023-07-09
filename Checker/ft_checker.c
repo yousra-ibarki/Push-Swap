@@ -1,4 +1,4 @@
-#include "../push_swap.h"
+#include "push_swap.h"
 
 void ft_free(struct s_node *stack_a)
 {
@@ -14,25 +14,25 @@ void ft_free(struct s_node *stack_a)
     }
 }
 
-int ft_count(struct s_node *head)
-{
-    int i;
-    struct s_node *current;
+// int ft_count(struct s_node *head)
+// {
+//     int i;
+//     struct s_node *current;
 
-    i = 0;
-    if (head == NULL)
-    {
-        printf("there is no node\n");
-        return 0;
-    }
-    current = head;
-    while (current != NULL)
-    {
-        current = current->link;
-        i++;
-    }
-    return i;
-}
+//     i = 0;
+//     if (head == NULL)
+//     {
+//         printf("there is no node\n");
+//         return 0;
+//     }
+//     current = head;
+//     while (current != NULL)
+//     {
+//         current = current->link;
+//         i++;
+//     }
+//     return i;
+// }
 
 void ft_print_data(struct s_node *head)
 {
@@ -113,7 +113,7 @@ int ft_check_sorted(struct s_node **stack_a, struct s_node **stack_b)
 {
     int count = 0;
     // int len = ft_count(*stack_a);
-    while (*stack_a && (*stack_a)->link && (*stack_a)->data < (*stack_a)->link->data)
+    while (*stack_a && (*stack_a)->link)
     {
         if ((*stack_a)->data < (*stack_a)->link->data)
             count++;
