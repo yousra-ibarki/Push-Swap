@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoibarki <yoibarki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/02 13:50:52 by yoibarki          #+#    #+#             */
-/*   Updated: 2023/05/02 16:48:05 by yoibarki         ###   ########.fr       */
+/*   Created: 2023/07/15 17:13:05 by yoibarki          #+#    #+#             */
+/*   Updated: 2023/07/15 17:13:08 by yoibarki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 struct s_node	*ft_delete_first_node(struct s_node *head)
 {
@@ -42,9 +41,9 @@ struct s_node	*ft_delete_last_node(struct s_node *head)
 	return (head);
 }
 
-struct s_node *ft_add_node(int data, int index)
+struct s_node	*ft_add_node(int data, int index)
 {
-	struct s_node *add_node;
+	struct s_node	*add_node;
 
 	add_node = (struct s_node *)malloc(sizeof(struct s_node));
 	if (!add_node)
@@ -76,7 +75,7 @@ struct s_node	*ft_add_end(struct s_node *head, int data, int index)
 {
 	struct s_node	*add_node;
 	struct s_node	*tmp;
-	int			i;
+	int				i;
 
 	i = 1;
 	add_node = ft_add_node(data, index);
