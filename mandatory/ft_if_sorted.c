@@ -6,11 +6,17 @@
 /*   By: yoibarki <yoibarki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 07:53:25 by yoibarki          #+#    #+#             */
-/*   Updated: 2023/07/16 13:27:24 by yoibarki         ###   ########.fr       */
+/*   Updated: 2023/07/16 15:30:43 by yoibarki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_error(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
+}
 
 void	ft_free(struct s_node **stack)
 {
@@ -27,22 +33,20 @@ void	ft_free(struct s_node **stack)
 	}
 }
 
-// int	ft_check_sorted(struct s_node **stack_a, struct s_node **stack_b)
-// {
-// 	int	count;
+int	ft_check_sorted(int ac, char **splited)
+{
+	int	j;
+	int	i;
 
-// 	count = 0;
-// 	while (*stack_a && (*stack_a)->link)
-// 	{
-// 		ft_print_data(*stack_a);
-// 		if ((*stack_a)->data < (*stack_a)->link->data)
-// 			{
-// 				count++;}
-// 		else
-// 			return (0);
-// 		*stack_a = (*stack_a)->link;
-// 	}
-// 	if (*stack_b != NULL)
-// 		return (0);
-// 	return (1);
-// }
+	j = 0;
+	ac = 0;
+	i = j + 1;
+	while (splited[j] && splited[i])
+	{
+		if (ft_atoi(splited[j]) > ft_atoi(splited[i]))
+			return (0);
+		j++;
+		i++;
+	}
+	return (1);
+}

@@ -6,24 +6,35 @@
 /*   By: yoibarki <yoibarki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 10:21:20 by yoibarki          #+#    #+#             */
-/*   Updated: 2023/07/15 10:22:24 by yoibarki         ###   ########.fr       */
+/*   Updated: 2023/07/16 22:01:18 by yoibarki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static char	*strrcpy(const char *src, char *dst)
+struct s_node	*push_b_bonus(struct s_node **src, struct s_node **dst)
 {
-	size_t	i;
+	struct s_node	*add_node;
+
+	if (!*src || !(*src)->link)
+		return (0);
+	add_node = ft_add_front(dst, (*src)->data, (*src)->index);
+	*src = ft_delete_first_node(*src);
+	return (*src);
+}
+
+char	*ft_strcpy(char *dest, char *src)
+{
+	int	i;
 
 	i = 0;
-	while (src[i])
+	while (src[i] != '\0')
 	{
-		dst[i] = src[i];
+		dest[i] = src[i];
 		i++;
 	}
-	dst[i] = '\0';
-	return (dst);
+	dest[i] = '\0';
+	return (dest);
 }
 
 char	*ft_strdup(char *s1)
@@ -31,11 +42,17 @@ char	*ft_strdup(char *s1)
 	int		len;
 	char	*arr;
 
+	if (!s1)
+	{
+		arr = malloc(1);
+		arr[0] = '\0';
+		return (arr);
+	}
 	len = ft_strlen(s1);
 	arr = malloc(len * sizeof(char) + 1);
 	if (arr == NULL)
 		return (NULL);
-	arr = strrcpy(s1, arr);
+	arr = ft_strcpy(arr, s1);
 	return (arr);
 }
 

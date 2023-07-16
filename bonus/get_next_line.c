@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yoibarki <yoibarki@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/16 21:58:55 by yoibarki          #+#    #+#             */
+/*   Updated: 2023/07/16 21:58:57 by yoibarki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static char	*get_line(char *hold)
+char	*get_line(char *hold)
 {
 	char	*next_line;
 	int		i;
@@ -26,7 +38,7 @@ static char	*get_line(char *hold)
 	return (next_line);
 }
 
-static char	*ft_nextone(char *hold)
+char	*ft_nextone(char *hold)
 {
 	int		i;
 	char	*rest;
@@ -51,7 +63,7 @@ static char	*ft_nextone(char *hold)
 	return (rest);
 }
 
-static char	*nbb_null(char *buffer_hold, char **hold, char *ret, int nbb)
+char	*nbb_null(char *buffer_hold, char **hold, char *ret, int nbb)
 {
 	if (nbb < 0)
 		return (free(buffer_hold), NULL);
@@ -91,7 +103,7 @@ char	*get_next_line(int fd)
 		if (nbb <= 0)
 			return (nbb_null(buffer_hold, &hold, ret, nbb));
 		buffer_hold[nbb] = '\0';
-		hold = ft_strjoin(hold, buffer_hold);
+		hold = ft_strjoin_bonus(hold, buffer_hold);
 	}
 	free(buffer_hold);
 	buffer_hold = get_line(hold);

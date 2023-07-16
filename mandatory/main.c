@@ -6,27 +6,11 @@
 /*   By: yoibarki <yoibarki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 10:08:54 by yoibarki          #+#    #+#             */
-/*   Updated: 2023/07/16 14:56:17 by yoibarki         ###   ########.fr       */
+/*   Updated: 2023/07/16 22:58:43 by yoibarki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-void	ft_print_data(struct s_node *head)
-{
-	int				i;
-	struct s_node	*current;
-
-	i = 1;
-	if (head == NULL)
-		return ;
-	current = head;
-	while (current != NULL)
-	{
-		printf("data = %d\n", current->data);
-		current = current->link;
-		i++;
-	}
-}
 
 struct s_node	*push_b(struct s_node **src, struct s_node **dst)
 {
@@ -38,7 +22,7 @@ struct s_node	*push_b(struct s_node **src, struct s_node **dst)
 	return (*src);
 }
 
-struct s_node	*ft_fill(int ac, char **av)
+struct s_node	*ft_fill(char **av)
 {
 	struct s_node	*head;
 	int				nbr;
@@ -46,7 +30,6 @@ struct s_node	*ft_fill(int ac, char **av)
 	char			**str;
 	int				j;
 
-	ac = 0;
 	head = NULL;
 	i = 1;
 	while (av[i])
@@ -62,6 +45,7 @@ struct s_node	*ft_fill(int ac, char **av)
 			j++;
 		}
 		i++;
+		ft_free_splited(str, j);
 	}
 	return (head);
 }
@@ -102,7 +86,7 @@ int	main(int ac, char **av)
 	{
 		str = ft_str_join(ac, av, " ");
 		ft_check(str, ac);
-		stack_a = ft_fill(ac, av);
+		stack_a = ft_fill(av);
 		if (ft_count(stack_a) == 2)
 			ft_two_number(&stack_a);
 		else if (ft_count(stack_a) == 3)
@@ -111,7 +95,6 @@ int	main(int ac, char **av)
 			ft_five_number(&stack_a, &stack_b);
 		else if (ft_count(stack_a) > 5)
 			ft_other_number(&stack_a, &stack_b);
-		//ft_print_data(stack_a);
 		ft_free(&stack_b);
 		ft_free(&stack_a);
 	}

@@ -1,21 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yoibarki <yoibarki@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/16 17:59:25 by yoibarki          #+#    #+#             */
+/*   Updated: 2023/07/16 21:59:28 by yoibarki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-char	*ft_backslash(char *hold)
-{
-	int	i;
 
-	i = 0;
-	if (!hold)
-		return (NULL);
-	while (hold[i])
-	{
-		if (hold[i] == '\n')
-			return (hold + i);
-		i++;
-	}
-	return (0);
-}
-
-static void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	char	*dest;
 	char	*sr;
@@ -35,7 +32,7 @@ static void	*ft_memcpy(void *dst, const void *src, size_t n)
 	return (dest);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_bonus(char *s1, char *s2)
 {
 	int		len1;
 	int		len2;
@@ -55,4 +52,20 @@ char	*ft_strjoin(char *s1, char *s2)
 	ptr[len1 + len2] = '\0';
 	free(s1);
 	return (ptr);
+}
+
+char	*ft_backslash(char *hold)
+{
+	int	i;
+
+	i = 0;
+	if (!hold)
+		return (NULL);
+	while (hold[i])
+	{
+		if (hold[i] == '\n')
+			return (hold + i);
+		i++;
+	}
+	return (0);
 }

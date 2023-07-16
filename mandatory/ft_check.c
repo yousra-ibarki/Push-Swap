@@ -6,17 +6,11 @@
 /*   By: yoibarki <yoibarki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 18:03:31 by yoibarki          #+#    #+#             */
-/*   Updated: 2023/07/16 14:58:50 by yoibarki         ###   ########.fr       */
+/*   Updated: 2023/07/16 22:48:21 by yoibarki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_error(void)
-{
-	write(2, "Error\n", 6);
-	exit(1);
-}
 
 int	ft_isdigit_space_minus_plus(int c)
 {
@@ -49,7 +43,7 @@ static void	ft_check_digit(char *str)
 					+ 1] == ' '))
 			ft_error();
 		else if ((ft_isdigit_space_minus_plus(str[i]) == 1
-					&& ft_isdigit_space_minus_plus(str[i + 1]) == -1))
+				&& ft_isdigit_space_minus_plus(str[i + 1]) == -1))
 			ft_error();
 		i++;
 	}
@@ -77,22 +71,18 @@ char	*ft_remove_plus_zero(char *str)
 	}
 	return (str);
 }
-int	ft_check_sorted(int ac, char **splited)
+
+void	ft_free_splited(char **splited, int j)
 {
-	int	j;
 	int	i;
 
-	j = 0;
-	ac = 0;
-	i = j + 1;
-	while (splited[j] && splited[i])
+	i = 0;
+	while (i < j)
 	{
-		if (ft_atoi(splited[j]) > ft_atoi(splited[i]))
-			return (0);
-		j++;
+		free(splited[i]);
 		i++;
 	}
-	return (1);
+	free(splited);
 }
 
 void	ft_check(char *str, int ac)
@@ -118,10 +108,8 @@ void	ft_check(char *str, int ac)
 		}
 		j++;
 	}
-	i = -1;
 	if (ft_check_sorted(ac, splited) != 0)
 		exit(1);
-	while (++i < j)
-		free(splited[i]);
-	free(splited);
+	ft_free_splited(splited, j);
+	free(str);
 }

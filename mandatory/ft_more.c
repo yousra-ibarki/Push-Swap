@@ -6,7 +6,7 @@
 /*   By: yoibarki <yoibarki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 10:29:11 by yoibarki          #+#    #+#             */
-/*   Updated: 2023/07/16 08:19:13 by yoibarki         ###   ########.fr       */
+/*   Updated: 2023/07/16 22:53:22 by yoibarki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	ft_index(struct s_node *stack_t, struct s_node **stack_a)
 		}
 		stack_t = stack_t->link;
 	}
-	ft_free(&stack_t);
 }
 
 static void	ft_push_to_b(struct s_node **stack_a, struct s_node **stack_b,
@@ -123,5 +122,6 @@ void	ft_other_number(struct s_node **stack_a, struct s_node **stack_b)
 	ft_selectionsort(&stack_t);
 	ft_index(stack_t, &(*stack_a));
 	ft_push_to_b(&(*stack_a), &(*stack_b), stack_t);
+	ft_free(&stack_t);
 	ft_push_to_a(&(*stack_a), &(*stack_b), current);
 }
