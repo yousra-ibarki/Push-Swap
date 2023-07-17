@@ -6,7 +6,7 @@
 /*   By: yoibarki <yoibarki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 10:08:54 by yoibarki          #+#    #+#             */
-/*   Updated: 2023/07/16 22:58:43 by yoibarki         ###   ########.fr       */
+/*   Updated: 2023/07/17 14:54:11 by yoibarki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ struct s_node	*ft_fill(char **av)
 	i = 1;
 	while (av[i])
 	{
-		if (av[i][0] == '\0')
-			ft_error();
 		str = ft_split(av[i], ' ');
 		j = 0;
 		while (str[j])
@@ -85,7 +83,8 @@ int	main(int ac, char **av)
 	if (ac >= 2)
 	{
 		str = ft_str_join(ac, av, " ");
-		ft_check(str, ac);
+		if (ft_check(str, ac) == 1)
+			exit(0);
 		stack_a = ft_fill(av);
 		if (ft_count(stack_a) == 2)
 			ft_two_number(&stack_a);

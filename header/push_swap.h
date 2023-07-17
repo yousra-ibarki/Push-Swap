@@ -6,7 +6,7 @@
 /*   By: yoibarki <yoibarki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:40:47 by yoibarki          #+#    #+#             */
-/*   Updated: 2023/07/16 22:59:39 by yoibarki         ###   ########.fr       */
+/*   Updated: 2023/07/17 12:05:18 by yoibarki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int					ft_find_max(struct s_node *stack_a);
 int					ft_atoi(const char *str);
 int					ft_find_min(struct s_node *stack_a);
 int					ft_count(struct s_node *head);
+int					ft_check(char *str, int ac);
 int					ft_isdigit_space_minus_plus(int c);
 void				ss(struct s_node *stack_a, struct s_node *stack_b);
 void				ft_error(void);
@@ -79,7 +80,6 @@ void				ft_five_number(struct s_node **stack_a,
 void				ft_index(struct s_node *stack_t, struct s_node **stack_a);
 void				ft_selectionsort(struct s_node **stack_t);
 void				ft_cases(struct s_node **stack_a, int time, int i);
-void				ft_check(char *str, int ac);
 char				*ft_backslash(char *hold);
 char				*get_next_line(int fd);
 char				*ft_strdup(char *s1);

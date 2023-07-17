@@ -6,7 +6,7 @@
 /*   By: yoibarki <yoibarki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 10:29:11 by yoibarki          #+#    #+#             */
-/*   Updated: 2023/07/16 22:53:22 by yoibarki         ###   ########.fr       */
+/*   Updated: 2023/07/17 14:52:23 by yoibarki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,29 +66,22 @@ static void	ft_push_to_b(struct s_node **stack_a, struct s_node **stack_b,
 	ft_index(stack_t, &(*stack_b));
 }
 
-int	ft_search_pos(struct s_node *current, int maxi, int pos)
-{
-	while (current->index != maxi)
-	{
-		pos++;
-		current = current->link;
-	}
-	return (pos);
-}
-
 static void	ft_push_to_a(struct s_node **stack_a, struct s_node **stack_b,
-		struct s_node *current)
+		struct s_node *current, int size)
 {
 	int	maxi;
-	int	size;
 	int	pos;
 
-	size = ft_count(*stack_b);
 	maxi = (size - 1);
 	while (*stack_b != NULL)
 	{
 		current = *stack_b;
-		pos = ft_search_pos(current, maxi, pos);
+		pos = 0;
+		while (current->index != maxi)
+		{
+			pos++;
+			current = current->link;
+		}
 		while ((*stack_b)->index != maxi)
 		{
 			if (pos < size / 2)
@@ -123,5 +116,5 @@ void	ft_other_number(struct s_node **stack_a, struct s_node **stack_b)
 	ft_index(stack_t, &(*stack_a));
 	ft_push_to_b(&(*stack_a), &(*stack_b), stack_t);
 	ft_free(&stack_t);
-	ft_push_to_a(&(*stack_a), &(*stack_b), current);
+	ft_push_to_a(&(*stack_a), &(*stack_b), current, ft_count(*stack_b));
 }

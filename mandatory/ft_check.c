@@ -6,7 +6,7 @@
 /*   By: yoibarki <yoibarki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/15 18:03:31 by yoibarki          #+#    #+#             */
-/*   Updated: 2023/07/16 22:48:21 by yoibarki         ###   ########.fr       */
+/*   Updated: 2023/07/17 14:54:43 by yoibarki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,29 +49,6 @@ static void	ft_check_digit(char *str)
 	}
 }
 
-char	*ft_remove_plus_zero(char *str)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (str[i])
-	{
-		if (str[i] == '+' && ft_isdigit_space_minus_plus(str[i + 1]) == 1)
-		{
-			j = i;
-			while (str[j])
-			{
-				str[j] = str[j + 1];
-				j++;
-			}
-		}
-		i++;
-	}
-	return (str);
-}
-
 void	ft_free_splited(char **splited, int j)
 {
 	int	i;
@@ -85,7 +62,7 @@ void	ft_free_splited(char **splited, int j)
 	free(splited);
 }
 
-void	ft_check(char *str, int ac)
+int	ft_check(char *str, int ac)
 {
 	int		i;
 	char	**splited;
@@ -94,7 +71,6 @@ void	ft_check(char *str, int ac)
 
 	j = 0;
 	ft_check_digit(str);
-	str = ft_remove_plus_zero(str);
 	splited = ft_split(str, ' ');
 	while (j < ac)
 	{
@@ -109,7 +85,8 @@ void	ft_check(char *str, int ac)
 		j++;
 	}
 	if (ft_check_sorted(ac, splited) != 0)
-		exit(1);
+		return (1);
 	ft_free_splited(splited, j);
 	free(str);
+	return (0);
 }

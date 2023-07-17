@@ -6,7 +6,7 @@
 /*   By: yoibarki <yoibarki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 21:57:29 by yoibarki          #+#    #+#             */
-/*   Updated: 2023/07/16 21:57:32 by yoibarki         ###   ########.fr       */
+/*   Updated: 2023/07/17 11:58:46 by yoibarki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ struct s_node	*push_a_bonus(struct s_node **src, struct s_node **dst)
 {
 	struct s_node	*add_node;
 
-	if (!*src || !(*src)->link)
+	if (!*src)
 		return (0);
 	add_node = ft_add_front(dst, (*src)->data, (*src)->index);
 	*src = ft_delete_first_node(*src);
